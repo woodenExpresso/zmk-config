@@ -1,1 +1,6 @@
+if SHIELD_MACRO_HUB
 
+config ZMK_KEYBOARD_NAME
+    default "Macro Hub"
+
+endif
