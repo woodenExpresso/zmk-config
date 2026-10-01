@@ -1,1 +1,115 @@
+/*
+ * I2C is on pins P0.17 (SDA) and P0.20 (SCL) on the nice!nano v2.
+ * The nice!nano exposes these as &i2c0.
+ */
+&i2c0 {
+    status = "okay";
+    sda-pin = <17>;
+    scl-pin = <20>;
+    clock-frequency = <I2C_BITRATE_FAST>;
 
+    /* ── TCA9548A I2C mux at address 0x70 ─────────────────────────── */
+    tca9548a: tca9548a@70 {
+        compatible = "ti,tca9548a";
+        reg = <0x70>;
+        #address-cells = <1>;
+        #size-cells = <0>;
+
+        /* ── Channel 0 — keys 0–3 ───────────────────────────────── */
+        i2c@0 {
+            reg = <0>;
+            #address-cells = <1>;
+            #size-cells = <0>;
+
+            key0: pca9557@18 { compatible = "nxp,pca9557"; reg = <0x18>; gpio-controller; #gpio-cells = <2>; };
+            key1: pca9557@19 { compatible = "nxp,pca9557"; reg = <0x19>; gpio-controller; #gpio-cells = <2>; };
+            key2: pca9557@1a { compatible = "nxp,pca9557"; reg = <0x1a>; gpio-controller; #gpio-cells = <2>; };
+            key3: pca9557@1b { compatible = "nxp,pca9557"; reg = <0x1b>; gpio-controller; #gpio-cells = <2>; };
+        };
+
+        /* ── Channel 1 — keys 4–7 ───────────────────────────────── */
+        i2c@1 {
+            reg = <1>;
+            #address-cells = <1>;
+            #size-cells = <0>;
+
+            key4: pca9557@18 { compatible = "nxp,pca9557"; reg = <0x18>; gpio-controller; #gpio-cells = <2>; };
+            key5: pca9557@19 { compatible = "nxp,pca9557"; reg = <0x19>; gpio-controller; #gpio-cells = <2>; };
+            key6: pca9557@1a { compatible = "nxp,pca9557"; reg = <0x1a>; gpio-controller; #gpio-cells = <2>; };
+            key7: pca9557@1b { compatible = "nxp,pca9557"; reg = <0x1b>; gpio-controller; #gpio-cells = <2>; };
+        };
+
+        /* ── Channel 2 — keys 8–11 ──────────────────────────────── */
+        i2c@2 {
+            reg = <2>;
+            #address-cells = <1>;
+            #size-cells = <0>;
+
+            key8:  pca9557@18 { compatible = "nxp,pca9557"; reg = <0x18>; gpio-controller; #gpio-cells = <2>; };
+            key9:  pca9557@19 { compatible = "nxp,pca9557"; reg = <0x19>; gpio-controller; #gpio-cells = <2>; };
+            key10: pca9557@1a { compatible = "nxp,pca9557"; reg = <0x1a>; gpio-controller; #gpio-cells = <2>; };
+            key11: pca9557@1b { compatible = "nxp,pca9557"; reg = <0x1b>; gpio-controller; #gpio-cells = <2>; };
+        };
+
+        /* ── Channel 3 — keys 12–15 ─────────────────────────────── */
+        i2c@3 {
+            reg = <3>;
+            #address-cells = <1>;
+            #size-cells = <0>;
+
+            key12: pca9557@18 { compatible = "nxp,pca9557"; reg = <0x18>; gpio-controller; #gpio-cells = <2>; };
+            key13: pca9557@19 { compatible = "nxp,pca9557"; reg = <0x19>; gpio-controller; #gpio-cells = <2>; };
+            key14: pca9557@1a { compatible = "nxp,pca9557"; reg = <0x1a>; gpio-controller; #gpio-cells = <2>; };
+            key15: pca9557@1b { compatible = "nxp,pca9557"; reg = <0x1b>; gpio-controller; #gpio-cells = <2>; };
+        };
+
+        /* ── Channel 4 — keys 16–17 ─────────────────────────────── */
+        i2c@4 {
+            reg = <4>;
+            #address-cells = <1>;
+            #size-cells = <0>;
+
+            key16: pca9557@18 { compatible = "nxp,pca9557"; reg = <0x18>; gpio-controller; #gpio-cells = <2>; };
+            key17: pca9557@19 { compatible = "nxp,pca9557"; reg = <0x19>; gpio-controller; #gpio-cells = <2>; };
+        };
+
+        /* ── Channel 5 — keys 18–19 ─────────────────────────────── */
+        i2c@5 {
+            reg = <5>;
+            #address-cells = <1>;
+            #size-cells = <0>;
+
+            key18: pca9557@18 { compatible = "nxp,pca9557"; reg = <0x18>; gpio-controller; #gpio-cells = <2>; };
+            key19: pca9557@19 { compatible = "nxp,pca9557"; reg = <0x19>; gpio-controller; #gpio-cells = <2>; };
+        };
+    };
+};
+
+/* ── kscan — polls IO0 on every PCA9557 as a direct-pin matrix ────────── */
+/ {
+    kscan0: kscan0 {
+        compatible = "zmk,kscan-gpio-direct";
+        label = "KSCAN";
+        input-gpios =
+            <&key0  0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
+            <&key1  0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
+            <&key2  0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
+            <&key3  0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
+            <&key4  0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
+            <&key5  0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
+            <&key6  0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
+            <&key7  0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
+            <&key8  0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
+            <&key9  0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
+            <&key10 0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
+            <&key11 0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
+            <&key12 0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
+            <&key13 0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
+            <&key14 0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
+            <&key15 0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
+            <&key16 0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
+            <&key17 0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
+            <&key18 0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
+            <&key19 0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+    };
+};
