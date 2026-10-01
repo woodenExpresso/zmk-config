@@ -1,1 +1,2 @@
-
+config SHIELD_MACRO_HUB
+    def_bool $(shields_list_contains,macro_hub)
