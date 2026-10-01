@@ -1,0 +1,60 @@
+name: Build ZMK Firmware
+
+on:
+  push:
+    paths:
+      - 'config/macro_hub.keymap'
+  repository_dispatch:
+    types: [build_firmware]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: zmkfirmware/zmk-build-arm:stable
+
+    steps:
+      - name: Checkout zmk-config
+        uses: actions/checkout@v4
+        with:
+          path: zmk-config
+
+      - name: Checkout ZMK
+        uses: actions/checkout@v4
+        with:
+          repository: zmkfirmware/zmk
+          ref: main
+          path: zmk
+          submodules: recursive
+
+      - name: Cache west modules
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/pip
+            zmk/modules
+            zmk/zephyr
+            zmk/bootloader
+          key: ${{ runner.os }}-zmk-${{ hashFiles('zmk-config/west.yml') }}
+
+      - name: West init & update
+        working-directory: zmk
+        run: |
+          pip3 install west
+          west init -l ../zmk-config/config
+          west update
+          west zephyr-export
+
+      - name: Build firmware
+        working-directory: zmk
+        run: |
+          west build -s app -b nice_nano_v2 \
+            -- -DSHIELD=macro_hub \
+               -DZMK_CONFIG="${GITHUB_WORKSPACE}/zmk-config/config"
+
+      - name: Upload .uf2
+        uses: actions/upload-artifact@v4
+        with:
+          name: macro_hub-firmware
+          path: zmk/build/zephyr/zmk.uf2
+          retention-days: 30
