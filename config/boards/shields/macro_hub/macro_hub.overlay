@@ -112,4 +112,9 @@
             <&key18 0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
             <&key19 0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
     };
+    /* USB serial port for key detection */
+    cdc_acm_uart0: cdc_acm_uart0 {
+        compatible = "zephyr,cdc-acm-uart";
+        label = "CDC_ACM_0";
+    };
 };
