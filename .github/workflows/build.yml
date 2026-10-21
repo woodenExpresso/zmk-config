@@ -31,7 +31,7 @@ jobs:
             ${{ runner.os }}-
 
       - name: West Init
-        run: west init -l config.
+        run: west init -l config
 
       - name: West Update
         run: west update
