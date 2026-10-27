@@ -1,11 +1,28 @@
-/*
- * I2C is on pins P0.17 (SDA) and P0.20 (SCL) on the nice!nano v2.
- * The nice!nano exposes these as &i2c0.
- */
+#include <dt-bindings/pinctrl/nrf-pinctrl.h>
+
+/* ── Pinctrl for I2C0: P0.17 = SDA, P0.20 = SCL ────────────────────── */
+&pinctrl {
+    i2c0_default: i2c0_default {
+        group1 {
+            psels = <NRF_PSEL(TWIM_SDA, 0, 17)>,
+                    <NRF_PSEL(TWIM_SCL, 0, 20)>;
+        };
+    };
+    i2c0_sleep: i2c0_sleep {
+        group1 {
+            psels = <NRF_PSEL(TWIM_SDA, 0, 17)>,
+                    <NRF_PSEL(TWIM_SCL, 0, 20)>;
+            low-power-enable;
+        };
+    };
+};
+
 &i2c0 {
+    compatible = "nordic,nrf-twim";
     status = "okay";
-    sda-pin = <17>;
-    scl-pin = <20>;
+    pinctrl-0 = <&i2c0_default>;
+    pinctrl-1 = <&i2c0_sleep>;
+    pinctrl-names = "default", "sleep";
     clock-frequency = <I2C_BITRATE_FAST>;
 
     /* ── TCA9548A I2C mux at address 0x70 ─────────────────────────── */
@@ -89,7 +106,6 @@
 / {
     kscan0: kscan0 {
         compatible = "zmk,kscan-gpio-direct";
-        label = "KSCAN";
         input-gpios =
             <&key0  0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
             <&key1  0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
@@ -112,9 +128,8 @@
             <&key18 0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
             <&key19 0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
     };
-    /* USB serial port for key detection */
+
     cdc_acm_uart0: cdc_acm_uart0 {
         compatible = "zephyr,cdc-acm-uart";
-        label = "CDC_ACM_0";
     };
 };
