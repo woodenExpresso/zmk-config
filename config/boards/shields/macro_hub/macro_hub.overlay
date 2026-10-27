@@ -39,10 +39,10 @@
             #address-cells = <1>;
             #size-cells = <0>;
 
-            key0: pca9557@18 { compatible = "nxp,pca9557"; reg = <0x18>; gpio-controller; #gpio-cells = <2>; };
-            key1: pca9557@19 { compatible = "nxp,pca9557"; reg = <0x19>; gpio-controller; #gpio-cells = <2>; };
-            key2: pca9557@1a { compatible = "nxp,pca9557"; reg = <0x1a>; gpio-controller; #gpio-cells = <2>; };
-            key3: pca9557@1b { compatible = "nxp,pca9557"; reg = <0x1b>; gpio-controller; #gpio-cells = <2>; };
+            key0: pca9538@18 { compatible = "nxp,pca9538"; reg = <0x18>; gpio-controller; #gpio-cells = <2>; };
+            key1: pca9538@19 { compatible = "nxp,pca9538"; reg = <0x19>; gpio-controller; #gpio-cells = <2>; };
+            key2: pca9538@1a { compatible = "nxp,pca9538"; reg = <0x1a>; gpio-controller; #gpio-cells = <2>; };
+            key3: pca9538@1b { compatible = "nxp,pca9538"; reg = <0x1b>; gpio-controller; #gpio-cells = <2>; };
         };
 
         /* ── Channel 1 — keys 4–7 ───────────────────────────────── */
@@ -52,10 +52,10 @@
             #address-cells = <1>;
             #size-cells = <0>;
 
-            key4: pca9557@18 { compatible = "nxp,pca9557"; reg = <0x18>; gpio-controller; #gpio-cells = <2>; };
-            key5: pca9557@19 { compatible = "nxp,pca9557"; reg = <0x19>; gpio-controller; #gpio-cells = <2>; };
-            key6: pca9557@1a { compatible = "nxp,pca9557"; reg = <0x1a>; gpio-controller; #gpio-cells = <2>; };
-            key7: pca9557@1b { compatible = "nxp,pca9557"; reg = <0x1b>; gpio-controller; #gpio-cells = <2>; };
+            key4: pca9538@18 { compatible = "nxp,pca9538"; reg = <0x18>; gpio-controller; #gpio-cells = <2>; };
+            key5: pca9538@19 { compatible = "nxp,pca9538"; reg = <0x19>; gpio-controller; #gpio-cells = <2>; };
+            key6: pca9538@1a { compatible = "nxp,pca9538"; reg = <0x1a>; gpio-controller; #gpio-cells = <2>; };
+            key7: pca9538@1b { compatible = "nxp,pca9538"; reg = <0x1b>; gpio-controller; #gpio-cells = <2>; };
         };
 
         /* ── Channel 2 — keys 8–11 ──────────────────────────────── */
@@ -65,10 +65,10 @@
             #address-cells = <1>;
             #size-cells = <0>;
 
-            key8:  pca9557@18 { compatible = "nxp,pca9557"; reg = <0x18>; gpio-controller; #gpio-cells = <2>; };
-            key9:  pca9557@19 { compatible = "nxp,pca9557"; reg = <0x19>; gpio-controller; #gpio-cells = <2>; };
-            key10: pca9557@1a { compatible = "nxp,pca9557"; reg = <0x1a>; gpio-controller; #gpio-cells = <2>; };
-            key11: pca9557@1b { compatible = "nxp,pca9557"; reg = <0x1b>; gpio-controller; #gpio-cells = <2>; };
+            key8:  pca9538@18 { compatible = "nxp,pca9538"; reg = <0x18>; gpio-controller; #gpio-cells = <2>; };
+            key9:  pca9538@19 { compatible = "nxp,pca9538"; reg = <0x19>; gpio-controller; #gpio-cells = <2>; };
+            key10: pca9538@1a { compatible = "nxp,pca9538"; reg = <0x1a>; gpio-controller; #gpio-cells = <2>; };
+            key11: pca9538@1b { compatible = "nxp,pca9538"; reg = <0x1b>; gpio-controller; #gpio-cells = <2>; };
         };
 
         /* ── Channel 3 — keys 12–15 ─────────────────────────────── */
@@ -78,10 +78,10 @@
             #address-cells = <1>;
             #size-cells = <0>;
 
-            key12: pca9557@18 { compatible = "nxp,pca9557"; reg = <0x18>; gpio-controller; #gpio-cells = <2>; };
-            key13: pca9557@19 { compatible = "nxp,pca9557"; reg = <0x19>; gpio-controller; #gpio-cells = <2>; };
-            key14: pca9557@1a { compatible = "nxp,pca9557"; reg = <0x1a>; gpio-controller; #gpio-cells = <2>; };
-            key15: pca9557@1b { compatible = "nxp,pca9557"; reg = <0x1b>; gpio-controller; #gpio-cells = <2>; };
+            key12: pca9538@18 { compatible = "nxp,pca9538"; reg = <0x18>; gpio-controller; #gpio-cells = <2>; };
+            key13: pca9538@19 { compatible = "nxp,pca9538"; reg = <0x19>; gpio-controller; #gpio-cells = <2>; };
+            key14: pca9538@1a { compatible = "nxp,pca9538"; reg = <0x1a>; gpio-controller; #gpio-cells = <2>; };
+            key15: pca9538@1b { compatible = "nxp,pca9538"; reg = <0x1b>; gpio-controller; #gpio-cells = <2>; };
         };
 
         /* ── Channel 4 — keys 16–17 ─────────────────────────────── */
@@ -91,8 +91,8 @@
             #address-cells = <1>;
             #size-cells = <0>;
 
-            key16: pca9557@18 { compatible = "nxp,pca9557"; reg = <0x18>; gpio-controller; #gpio-cells = <2>; };
-            key17: pca9557@19 { compatible = "nxp,pca9557"; reg = <0x19>; gpio-controller; #gpio-cells = <2>; };
+            key16: pca9538@18 { compatible = "nxp,pca9538"; reg = <0x18>; gpio-controller; #gpio-cells = <2>; };
+            key17: pca9538@19 { compatible = "nxp,pca9538"; reg = <0x19>; gpio-controller; #gpio-cells = <2>; };
         };
 
         /* ── Channel 5 — keys 18–19 ─────────────────────────────── */
@@ -102,8 +102,8 @@
             #address-cells = <1>;
             #size-cells = <0>;
 
-            key18: pca9557@18 { compatible = "nxp,pca9557"; reg = <0x18>; gpio-controller; #gpio-cells = <2>; };
-            key19: pca9557@19 { compatible = "nxp,pca9557"; reg = <0x19>; gpio-controller; #gpio-cells = <2>; };
+            key18: pca9538@18 { compatible = "nxp,pca9538"; reg = <0x18>; gpio-controller; #gpio-cells = <2>; };
+            key19: pca9538@19 { compatible = "nxp,pca9538"; reg = <0x19>; gpio-controller; #gpio-cells = <2>; };
         };
     };
 };
