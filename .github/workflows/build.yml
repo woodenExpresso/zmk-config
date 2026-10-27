@@ -43,3 +43,4 @@ jobs:
           name: macro_hub-firmware
           path: build/zephyr/zmk.uf2
           retention-days: 30
+ 
