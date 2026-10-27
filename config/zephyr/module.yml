@@ -1,0 +1,6 @@
+name: macro_hub_config
+build:
+  cmake: drivers
+  kconfig: drivers/Kconfig
+  settings:
+    dts_root: .
