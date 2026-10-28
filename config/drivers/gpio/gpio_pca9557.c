@@ -173,7 +173,7 @@ static int pca9557_init(const struct device *dev)
 			      &pca9557_data_##inst,			       \
 			      &pca9557_config_##inst,			       \
 			      POST_KERNEL,				       \
-			      CONFIG_GPIO_INIT_PRIORITY,		       \
+			      CONFIG_GPIO_PCA9557_INIT_PRIORITY,	       \
 			      &pca9557_gpio_api);
 
 DT_INST_FOREACH_STATUS_OKAY(PCA9557_DEVICE)
