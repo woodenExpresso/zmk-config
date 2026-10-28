@@ -163,7 +163,7 @@ static int pca9557_init(const struct device *dev)
 #define PCA9557_DEVICE(inst)						       \
 	static const struct pca9557_config pca9557_config_##inst = {	       \
 		.common = {						       \
-			.port_pin_mask = GPIO_PORT_PIN_MASK_FROM_NGPIOS(8),    \
+			.port_pin_mask = (gpio_port_pins_t)0xFF,		       \
 		},							       \
 		.i2c = I2C_DT_SPEC_INST_GET(inst),			       \
 	};								       \
