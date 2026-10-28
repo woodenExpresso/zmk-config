@@ -1,9 +1,17 @@
 config GPIO_PCA9557
 	bool "PCA9557 I2C GPIO expander"
 	default y
-	depends on DT_HAS_NXP_PCA9557_ENABLED
-	depends on I2C
-	select GPIO
+	depends on DT_HAS_NXP_PCA9557_ENABLED && I2C && GPIO
 	help
 	  Enable driver for NXP PCA9557 8-bit I2C GPIO expander.
 	  Register layout is identical to PCA9534 and TCA6408A.
+
+config GPIO_PCA9557_INIT_PRIORITY
+	int "PCA9557 init priority"
+	default 80
+	depends on GPIO_PCA9557
+	help
+	  Init priority for PCA9557 devices. Must be higher than
+	  CONFIG_I2C_TCA954X_CHANNEL_INIT_PRIO (default 61) so the
+	  expanders initialize after their mux channel parents.
+
