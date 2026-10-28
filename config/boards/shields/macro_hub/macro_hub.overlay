@@ -136,6 +136,13 @@
     };
 };
 
+/* ── CDC ACM UART — must be a child of the USB device controller ────────── */
+&usbd {
+    cdc_acm_uart0: cdc_acm_uart0 {
+        compatible = "zephyr,cdc-acm-uart";
+    };
+};
+
 /* ── kscan — polls IO0 on every PCA9557 as a direct-pin matrix ────────── */
 / {
     kscan0: kscan0 {
@@ -163,7 +170,4 @@
             <&key19 0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
     };
 
-    cdc_acm_uart0: cdc_acm_uart0 {
-        compatible = "zephyr,cdc-acm-uart";
-    };
 };
