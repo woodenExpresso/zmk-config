@@ -1,0 +1,11 @@
+description: PCF8574 8-bit I2C GPIO expander (quasi-bidirectional I/O)
+
+compatible: "stitchkeys,pcf8574"
+
+include:
+  - name: gpio-controller.yaml
+  - name: i2c-device.yaml
+
+gpio-cells:
+  - pin
+  - flags
