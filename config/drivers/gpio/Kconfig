@@ -1,9 +1,8 @@
-config GPIO_PCA9557
-	bool "PCA9557 I2C GPIO expander"
+config GPIO_PCF8574
+	bool "PCF8574 I2C GPIO expander"
 	default y
-	depends on DT_HAS_NXP_PCA9557_ENABLED && I2C && GPIO
+	depends on DT_HAS_STITCHKEYS_PCF8574_ENABLED && I2C && GPIO
 	help
-	  Enable driver for NXP PCA9557 8-bit I2C GPIO expander.
-	  Register layout is identical to PCA9534 and TCA6408A.
-
-
+	  Enable driver for PCF8574 8-bit I2C GPIO expander.
+	  Quasi-bidirectional I/O: write 1 to use a pin as input,
+	  write 0 to drive it low. No register addressing needed.
