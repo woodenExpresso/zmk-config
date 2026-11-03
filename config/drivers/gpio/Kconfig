@@ -1,7 +1,7 @@
 config GPIO_PCF8574
 	bool "PCF8574 I2C GPIO expander"
 	default y
-	depends on DT_HAS_STITCHKEYS_PCF8574_ENABLED && I2C && GPIO
+	depends on I2C && GPIO
 	help
 	  Enable driver for PCF8574 8-bit I2C GPIO expander.
 	  Quasi-bidirectional I/O: write 1 to use a pin as input,
