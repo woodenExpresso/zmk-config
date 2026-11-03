@@ -40,10 +40,10 @@
             #address-cells = <1>;
             #size-cells = <0>;
 
-            key0: pca9557@18 { compatible = "nxp,pca9557"; reg = <0x18>; gpio-controller; #gpio-cells = <2>; };
-            key1: pca9557@19 { compatible = "nxp,pca9557"; reg = <0x19>; gpio-controller; #gpio-cells = <2>; };
-            key2: pca9557@1a { compatible = "nxp,pca9557"; reg = <0x1a>; gpio-controller; #gpio-cells = <2>; };
-            key3: pca9557@1b { compatible = "nxp,pca9557"; reg = <0x1b>; gpio-controller; #gpio-cells = <2>; };
+            key0: pcf8574@20 { compatible = "stitchkeys,pcf8574"; reg = <0x20>; gpio-controller; #gpio-cells = <2>; };
+            key1: pcf8574@21 { compatible = "stitchkeys,pcf8574"; reg = <0x21>; gpio-controller; #gpio-cells = <2>; };
+            key2: pcf8574@22 { compatible = "stitchkeys,pcf8574"; reg = <0x22>; gpio-controller; #gpio-cells = <2>; };
+            key3: pcf8574@23 { compatible = "stitchkeys,pcf8574"; reg = <0x23>; gpio-controller; #gpio-cells = <2>; };
         };
 
         /* ── Channel 1 — keys 4–7 ───────────────────────────────── */
@@ -53,10 +53,10 @@
             #address-cells = <1>;
             #size-cells = <0>;
 
-            key4: pca9557@18 { compatible = "nxp,pca9557"; reg = <0x18>; gpio-controller; #gpio-cells = <2>; };
-            key5: pca9557@19 { compatible = "nxp,pca9557"; reg = <0x19>; gpio-controller; #gpio-cells = <2>; };
-            key6: pca9557@1a { compatible = "nxp,pca9557"; reg = <0x1a>; gpio-controller; #gpio-cells = <2>; };
-            key7: pca9557@1b { compatible = "nxp,pca9557"; reg = <0x1b>; gpio-controller; #gpio-cells = <2>; };
+            key4: pcf8574@20 { compatible = "stitchkeys,pcf8574"; reg = <0x20>; gpio-controller; #gpio-cells = <2>; };
+            key5: pcf8574@21 { compatible = "stitchkeys,pcf8574"; reg = <0x21>; gpio-controller; #gpio-cells = <2>; };
+            key6: pcf8574@22 { compatible = "stitchkeys,pcf8574"; reg = <0x22>; gpio-controller; #gpio-cells = <2>; };
+            key7: pcf8574@23 { compatible = "stitchkeys,pcf8574"; reg = <0x23>; gpio-controller; #gpio-cells = <2>; };
         };
 
         /* ── Channel 2 — keys 8–11 ──────────────────────────────── */
@@ -66,10 +66,10 @@
             #address-cells = <1>;
             #size-cells = <0>;
 
-            key8:  pca9557@18 { compatible = "nxp,pca9557"; reg = <0x18>; gpio-controller; #gpio-cells = <2>; };
-            key9:  pca9557@19 { compatible = "nxp,pca9557"; reg = <0x19>; gpio-controller; #gpio-cells = <2>; };
-            key10: pca9557@1a { compatible = "nxp,pca9557"; reg = <0x1a>; gpio-controller; #gpio-cells = <2>; };
-            key11: pca9557@1b { compatible = "nxp,pca9557"; reg = <0x1b>; gpio-controller; #gpio-cells = <2>; };
+            key8:  pcf8574@20 { compatible = "stitchkeys,pcf8574"; reg = <0x20>; gpio-controller; #gpio-cells = <2>; };
+            key9:  pcf8574@21 { compatible = "stitchkeys,pcf8574"; reg = <0x21>; gpio-controller; #gpio-cells = <2>; };
+            key10: pcf8574@22 { compatible = "stitchkeys,pcf8574"; reg = <0x22>; gpio-controller; #gpio-cells = <2>; };
+            key11: pcf8574@23 { compatible = "stitchkeys,pcf8574"; reg = <0x23>; gpio-controller; #gpio-cells = <2>; };
         };
 
         /* ── Channel 3 — keys 12–15 ─────────────────────────────── */
@@ -79,10 +79,10 @@
             #address-cells = <1>;
             #size-cells = <0>;
 
-            key12: pca9557@18 { compatible = "nxp,pca9557"; reg = <0x18>; gpio-controller; #gpio-cells = <2>; };
-            key13: pca9557@19 { compatible = "nxp,pca9557"; reg = <0x19>; gpio-controller; #gpio-cells = <2>; };
-            key14: pca9557@1a { compatible = "nxp,pca9557"; reg = <0x1a>; gpio-controller; #gpio-cells = <2>; };
-            key15: pca9557@1b { compatible = "nxp,pca9557"; reg = <0x1b>; gpio-controller; #gpio-cells = <2>; };
+            key12: pcf8574@20 { compatible = "stitchkeys,pcf8574"; reg = <0x20>; gpio-controller; #gpio-cells = <2>; };
+            key13: pcf8574@21 { compatible = "stitchkeys,pcf8574"; reg = <0x21>; gpio-controller; #gpio-cells = <2>; };
+            key14: pcf8574@22 { compatible = "stitchkeys,pcf8574"; reg = <0x22>; gpio-controller; #gpio-cells = <2>; };
+            key15: pcf8574@23 { compatible = "stitchkeys,pcf8574"; reg = <0x23>; gpio-controller; #gpio-cells = <2>; };
         };
 
         /* ── Channel 4 — keys 16–17 ─────────────────────────────── */
@@ -92,8 +92,8 @@
             #address-cells = <1>;
             #size-cells = <0>;
 
-            key16: pca9557@18 { compatible = "nxp,pca9557"; reg = <0x18>; gpio-controller; #gpio-cells = <2>; };
-            key17: pca9557@19 { compatible = "nxp,pca9557"; reg = <0x19>; gpio-controller; #gpio-cells = <2>; };
+            key16: pcf8574@20 { compatible = "stitchkeys,pcf8574"; reg = <0x20>; gpio-controller; #gpio-cells = <2>; };
+            key17: pcf8574@21 { compatible = "stitchkeys,pcf8574"; reg = <0x21>; gpio-controller; #gpio-cells = <2>; };
         };
 
         /* ── Channel 5 — keys 18–19 ─────────────────────────────── */
@@ -103,9 +103,16 @@
             #address-cells = <1>;
             #size-cells = <0>;
 
-            key18: pca9557@18 { compatible = "nxp,pca9557"; reg = <0x18>; gpio-controller; #gpio-cells = <2>; };
-            key19: pca9557@19 { compatible = "nxp,pca9557"; reg = <0x19>; gpio-controller; #gpio-cells = <2>; };
+            key18: pcf8574@20 { compatible = "stitchkeys,pcf8574"; reg = <0x20>; gpio-controller; #gpio-cells = <2>; };
+            key19: pcf8574@21 { compatible = "stitchkeys,pcf8574"; reg = <0x21>; gpio-controller; #gpio-cells = <2>; };
         };
+    };
+};
+
+/* ── CDC ACM UART — must be a child of the USB device controller ────────── */
+&usbd {
+    cdc_acm_uart0: cdc_acm_uart0 {
+        compatible = "zephyr,cdc-acm-uart";
     };
 };
 
@@ -136,14 +143,7 @@
     };
 };
 
-/* ── CDC ACM UART — must be a child of the USB device controller ────────── */
-&usbd {
-    cdc_acm_uart0: cdc_acm_uart0 {
-        compatible = "zephyr,cdc-acm-uart";
-    };
-};
-
-/* ── kscan — polls IO0 on every PCA9557 as a direct-pin matrix ────────── */
+/* ── kscan — polls P0 on every PCF8574 as a direct-pin matrix ──────────── */
 / {
     kscan0: kscan0 {
         compatible = "zmk,kscan-gpio-direct";
@@ -169,5 +169,4 @@
             <&key18 0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
             <&key19 0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
     };
-
 };
