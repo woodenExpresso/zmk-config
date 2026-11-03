@@ -1,2 +1,2 @@
 zephyr_library()
-zephyr_library_sources_ifdef(CONFIG_GPIO_PCA9557 gpio_pca9557.c)
+zephyr_library_sources_ifdef(CONFIG_GPIO_PCF8574 gpio_pcf8574.c)
