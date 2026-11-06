@@ -43,6 +43,14 @@
             key11: pca9557@0x23 { compatible = "nxp,pca9557"; reg = <0x0x23>; gpio-controller; #gpio-cells = <2>; };
         };
 
+        i2c@demo {
+            reg = <demo>;
+            #address-cells = <1>;
+            #size-cells = <0>;
+
+            key12: pca9557@demo_1793926115980 { compatible = "nxp,pca9557"; reg = <0xdemo_1793926115980>; gpio-controller; #gpio-cells = <2>; };
+        };
+
     };
 };
 
@@ -62,7 +70,8 @@
             <&key8 0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
             <&key9 0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
             <&key10 0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
-            <&key11 0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+            <&key11 0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
+            <&key12 0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
     };
 
     cdc_acm_uart0: cdc_acm_uart0 {
