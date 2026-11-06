@@ -1,172 +1,72 @@
-#include <dt-bindings/pinctrl/nrf-pinctrl.h>
-#include <dt-bindings/zmk/matrix_transform.h>
-
-/* ── Pinctrl for I2C0: P0.17 = SDA, P0.20 = SCL ────────────────────── */
-&pinctrl {
-    i2c0_default: i2c0_default {
-        group1 {
-            psels = <NRF_PSEL(TWIM_SDA, 0, 17)>,
-                    <NRF_PSEL(TWIM_SCL, 0, 20)>;
-        };
-    };
-    i2c0_sleep: i2c0_sleep {
-        group1 {
-            psels = <NRF_PSEL(TWIM_SDA, 0, 17)>,
-                    <NRF_PSEL(TWIM_SCL, 0, 20)>;
-            low-power-enable;
-        };
-    };
-};
-
 &i2c0 {
-    compatible = "nordic,nrf-twim";
     status = "okay";
-    pinctrl-0 = <&i2c0_default>;
-    pinctrl-1 = <&i2c0_sleep>;
-    pinctrl-names = "default", "sleep";
+    sda-pin = <17>;
+    scl-pin = <20>;
     clock-frequency = <I2C_BITRATE_FAST>;
 
-    /* ── TCA9548A I2C mux at address 0x70 ─────────────────────────── */
     tca9548a: tca9548a@70 {
         compatible = "ti,tca9548a";
         reg = <0x70>;
         #address-cells = <1>;
         #size-cells = <0>;
 
-        /* ── Channel 0 — keys 0–3 ───────────────────────────────── */
         i2c@0 {
-            compatible = "ti,tca9548a-channel";
             reg = <0>;
             #address-cells = <1>;
             #size-cells = <0>;
 
-            key0: pcf8574@20 { compatible = "stitchkeys,pcf8574"; reg = <0x20>; gpio-controller; #gpio-cells = <2>; };
-            key1: pcf8574@21 { compatible = "stitchkeys,pcf8574"; reg = <0x21>; gpio-controller; #gpio-cells = <2>; };
-            key2: pcf8574@22 { compatible = "stitchkeys,pcf8574"; reg = <0x22>; gpio-controller; #gpio-cells = <2>; };
-            key3: pcf8574@23 { compatible = "stitchkeys,pcf8574"; reg = <0x23>; gpio-controller; #gpio-cells = <2>; };
+            key0: pca9557@0x20 { compatible = "nxp,pca9557"; reg = <0x0x20>; gpio-controller; #gpio-cells = <2>; };
+            key1: pca9557@0x21 { compatible = "nxp,pca9557"; reg = <0x0x21>; gpio-controller; #gpio-cells = <2>; };
+            key2: pca9557@0x22 { compatible = "nxp,pca9557"; reg = <0x0x22>; gpio-controller; #gpio-cells = <2>; };
+            key3: pca9557@0x23 { compatible = "nxp,pca9557"; reg = <0x0x23>; gpio-controller; #gpio-cells = <2>; };
         };
 
-        /* ── Channel 1 — keys 4–7 ───────────────────────────────── */
         i2c@1 {
-            compatible = "ti,tca9548a-channel";
             reg = <1>;
             #address-cells = <1>;
             #size-cells = <0>;
 
-            key4: pcf8574@20 { compatible = "stitchkeys,pcf8574"; reg = <0x20>; gpio-controller; #gpio-cells = <2>; };
-            key5: pcf8574@21 { compatible = "stitchkeys,pcf8574"; reg = <0x21>; gpio-controller; #gpio-cells = <2>; };
-            key6: pcf8574@22 { compatible = "stitchkeys,pcf8574"; reg = <0x22>; gpio-controller; #gpio-cells = <2>; };
-            key7: pcf8574@23 { compatible = "stitchkeys,pcf8574"; reg = <0x23>; gpio-controller; #gpio-cells = <2>; };
+            key4: pca9557@0x20 { compatible = "nxp,pca9557"; reg = <0x0x20>; gpio-controller; #gpio-cells = <2>; };
+            key5: pca9557@0x21 { compatible = "nxp,pca9557"; reg = <0x0x21>; gpio-controller; #gpio-cells = <2>; };
+            key6: pca9557@0x22 { compatible = "nxp,pca9557"; reg = <0x0x22>; gpio-controller; #gpio-cells = <2>; };
+            key7: pca9557@0x23 { compatible = "nxp,pca9557"; reg = <0x0x23>; gpio-controller; #gpio-cells = <2>; };
         };
 
-        /* ── Channel 2 — keys 8–11 ──────────────────────────────── */
         i2c@2 {
-            compatible = "ti,tca9548a-channel";
             reg = <2>;
             #address-cells = <1>;
             #size-cells = <0>;
 
-            key8:  pcf8574@20 { compatible = "stitchkeys,pcf8574"; reg = <0x20>; gpio-controller; #gpio-cells = <2>; };
-            key9:  pcf8574@21 { compatible = "stitchkeys,pcf8574"; reg = <0x21>; gpio-controller; #gpio-cells = <2>; };
-            key10: pcf8574@22 { compatible = "stitchkeys,pcf8574"; reg = <0x22>; gpio-controller; #gpio-cells = <2>; };
-            key11: pcf8574@23 { compatible = "stitchkeys,pcf8574"; reg = <0x23>; gpio-controller; #gpio-cells = <2>; };
+            key8: pca9557@0x20 { compatible = "nxp,pca9557"; reg = <0x0x20>; gpio-controller; #gpio-cells = <2>; };
+            key9: pca9557@0x21 { compatible = "nxp,pca9557"; reg = <0x0x21>; gpio-controller; #gpio-cells = <2>; };
+            key10: pca9557@0x22 { compatible = "nxp,pca9557"; reg = <0x0x22>; gpio-controller; #gpio-cells = <2>; };
+            key11: pca9557@0x23 { compatible = "nxp,pca9557"; reg = <0x0x23>; gpio-controller; #gpio-cells = <2>; };
         };
 
-        /* ── Channel 3 — keys 12–15 ─────────────────────────────── */
-        i2c@3 {
-            compatible = "ti,tca9548a-channel";
-            reg = <3>;
-            #address-cells = <1>;
-            #size-cells = <0>;
-
-            key12: pcf8574@20 { compatible = "stitchkeys,pcf8574"; reg = <0x20>; gpio-controller; #gpio-cells = <2>; };
-            key13: pcf8574@21 { compatible = "stitchkeys,pcf8574"; reg = <0x21>; gpio-controller; #gpio-cells = <2>; };
-            key14: pcf8574@22 { compatible = "stitchkeys,pcf8574"; reg = <0x22>; gpio-controller; #gpio-cells = <2>; };
-            key15: pcf8574@23 { compatible = "stitchkeys,pcf8574"; reg = <0x23>; gpio-controller; #gpio-cells = <2>; };
-        };
-
-        /* ── Channel 4 — keys 16–17 ─────────────────────────────── */
-        i2c@4 {
-            compatible = "ti,tca9548a-channel";
-            reg = <4>;
-            #address-cells = <1>;
-            #size-cells = <0>;
-
-            key16: pcf8574@20 { compatible = "stitchkeys,pcf8574"; reg = <0x20>; gpio-controller; #gpio-cells = <2>; };
-            key17: pcf8574@21 { compatible = "stitchkeys,pcf8574"; reg = <0x21>; gpio-controller; #gpio-cells = <2>; };
-        };
-
-        /* ── Channel 5 — keys 18–19 ─────────────────────────────── */
-        i2c@5 {
-            compatible = "ti,tca9548a-channel";
-            reg = <5>;
-            #address-cells = <1>;
-            #size-cells = <0>;
-
-            key18: pcf8574@20 { compatible = "stitchkeys,pcf8574"; reg = <0x20>; gpio-controller; #gpio-cells = <2>; };
-            key19: pcf8574@21 { compatible = "stitchkeys,pcf8574"; reg = <0x21>; gpio-controller; #gpio-cells = <2>; };
-        };
     };
 };
 
-/* ── CDC ACM UART — must be a child of the USB device controller ────────── */
-&usbd {
-    cdc_acm_uart0: cdc_acm_uart0 {
-        compatible = "zephyr,cdc-acm-uart";
-    };
-};
-
-/* ── ZMK layout ─────────────────────────────────────────────────────────── */
-/ {
-    chosen {
-        zmk,kscan = &kscan0;
-        zmk,matrix-transform = &default_transform;
-    };
-
-    default_transform: keymap_transform_0 {
-        compatible = "zmk,matrix-transform";
-        columns = <20>;
-        rows = <1>;
-        map = <
-            RC(0,0)  RC(0,1)  RC(0,2)  RC(0,3)  RC(0,4)
-            RC(0,5)  RC(0,6)  RC(0,7)  RC(0,8)  RC(0,9)
-            RC(0,10) RC(0,11) RC(0,12) RC(0,13) RC(0,14)
-            RC(0,15) RC(0,16) RC(0,17) RC(0,18) RC(0,19)
-        >;
-    };
-
-    default_layout: default_layout {
-        compatible = "zmk,physical-layout";
-        display-name = "Default";
-        transform = <&default_transform>;
-        kscan = <&kscan0>;
-    };
-};
-
-/* ── kscan — polls P0 on every PCF8574 as a direct-pin matrix ──────────── */
 / {
     kscan0: kscan0 {
         compatible = "zmk,kscan-gpio-direct";
+        label = "KSCAN";
         input-gpios =
-            <&key0  0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
-            <&key1  0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
-            <&key2  0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
-            <&key3  0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
-            <&key4  0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
-            <&key5  0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
-            <&key6  0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
-            <&key7  0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
-            <&key8  0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
-            <&key9  0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
+            <&key0 0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
+            <&key1 0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
+            <&key2 0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
+            <&key3 0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
+            <&key4 0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
+            <&key5 0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
+            <&key6 0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
+            <&key7 0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
+            <&key8 0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
+            <&key9 0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
             <&key10 0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
-            <&key11 0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
-            <&key12 0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
-            <&key13 0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
-            <&key14 0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
-            <&key15 0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
-            <&key16 0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
-            <&key17 0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
-            <&key18 0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>,
-            <&key19 0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+            <&key11 0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+    };
+
+    cdc_acm_uart0: cdc_acm_uart0 {
+        compatible = "zephyr,cdc-acm-uart";
+        label = "CDC_ACM_0";
     };
 };
