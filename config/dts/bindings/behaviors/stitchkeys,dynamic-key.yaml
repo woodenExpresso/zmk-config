@@ -1,0 +1,3 @@
+description: Dynamic runtime-configurable key behavior
+compatible: "stitchkeys,dynamic-key"
+include: one-param-behavior.yaml
