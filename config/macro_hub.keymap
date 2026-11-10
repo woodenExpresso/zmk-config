@@ -2,30 +2,21 @@
 #include <dt-bindings/zmk/keys.h>
 
 / {
+    behaviors {
+        dkey: dynamic_key {
+            compatible = "stitchkeys,dynamic-key";
+            #binding-cells = <1>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
         default_layer {
             bindings = <
-                &none
-                &none
-                &none
-                &none
-                &none
-                &none
-                &none
-                &none
-                &none
-                &none
-                &none
-                &none
-                &none
-                &none
-                &none
-                &none
-                &none
-                &none
-                &none
-                &none
+                &dkey 0  &dkey 1  &dkey 2  &dkey 3  &dkey 4
+                &dkey 5  &dkey 6  &dkey 7  &dkey 8  &dkey 9
+                &dkey 10 &dkey 11 &dkey 12 &dkey 13 &dkey 14
+                &dkey 15 &dkey 16 &dkey 17 &dkey 18 &dkey 19
             >;
         };
     };
