@@ -1,4 +1,6 @@
 if(CONFIG_SHIELD_MACRO_HUB)
     target_sources(app PRIVATE src/key_reporter.c)
     target_sources(app PRIVATE src/fingerprint.c)
-endif()
+    target_sources(app PRIVATE src/dynamic_key.c)
+    target_sources(app PRIVATE src/serial_handler.c)
+endif())
