@@ -16,6 +16,7 @@
 #include <zephyr/init.h>
 #include <string.h>
 #include "key_overrides.h"
+#include <stdlib.h>
 
 #define UART_DEVICE_NODE DT_NODELABEL(cdc_acm_uart0)
 #define RX_BUF_SIZE 128
